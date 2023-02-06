@@ -1,13 +1,4 @@
-# Interview_implement_C_CPP
-## Build-in function
-- strcpy()
-- strcmp()
-- strncmp()
-- memset()
-
-## CPP function
-- upper_bound()
-- lower_bound()
+# Algorithm_C_2023
 
 ## Data structure
 - Linked list
