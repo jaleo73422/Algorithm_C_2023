@@ -1,10 +1,10 @@
 # Algorithm_C_2023
 
 ## Data structure
-- Linked list
-|- push, append, insert
-|- delete from beginning, end, middle (by value, delete by index)
-|- sort (bubble, insertion, selection, quick, merge sort)
+- Linked list <br/>
+  |- push, append, insert <br/>
+  |- delete from beginning, end, middle (by value, delete by index) <br/>
+  |- sort (bubble, insertion, selection, quick, merge sort) <br/>
 
 - Stack (array, linked list)
 
@@ -13,12 +13,12 @@
 ## Algorithm
 - Binary search
 
-- Sort
-|- Bubble sort
-|- Insertion sort
-|- Selection sort
-|- Quick sort
-|- Merge sort
+- Sort <br/>
+  |- Bubble sort <br/>
+  |- Insertion sort <br/>
+  |- Selection sort <br/>
+  |- Quick sort <br/>
+  |- Merge sort <br/>
 
 
 ===================
