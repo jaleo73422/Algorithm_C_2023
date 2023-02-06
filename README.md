@@ -2,9 +2,9 @@
 
 ## Data structure
 - Linked list
-  |- push, append, insert
-  |- delete from beginning, end, middle (by value, delete by index)
-  |- sort (bubble, insertion, selection, quick, merge sort)
+|- push, append, insert
+|- delete from beginning, end, middle (by value, delete by index)
+|- sort (bubble, insertion, selection, quick, merge sort)
 
 - Stack (array, linked list)
 
@@ -14,11 +14,11 @@
 - Binary search
 
 - Sort
-  |- Bubble sort
-  |- Insertion sort
-  |- Selection sort
-  |- Quick sort
-  |- Merge sort
+|- Bubble sort
+|- Insertion sort
+|- Selection sort
+|- Quick sort
+|- Merge sort
 
 
 ===================
