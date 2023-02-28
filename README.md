@@ -20,5 +20,14 @@
   |- Quick sort <br/>
   |- Merge sort <br/>
 
+## C build-in function
+- strcpy()
+- strcmp()
+- strncmp()
+- memset()
+
+## CPP function
+- upper_bound()
+- lower_bound()
 
 ===================
