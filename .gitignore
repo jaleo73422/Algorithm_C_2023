@@ -1,4 +1,10 @@
-*.vscode
+.vscode
+
+test.c
+test_2.c
+test_3.c
+test.cpp
+whiteboard.txt
 
 # Prerequisites
 *.d
