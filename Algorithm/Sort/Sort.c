@@ -81,83 +81,138 @@ void selectionSort(int arr[], int n) {
     }
 }
 
-void merge(int arr[], int l, int m, int r) {
-    int tem[r + 1], tem_index = l;
-    int l_ptr = l, r_ptr = m + 1;
+// void merge(int arr[], int l, int m, int r) {
+//     int tem[r + 1], tem_index = l;
+//     int l_ptr = l, r_ptr = m + 1;
 
-    for(int i = 0; i <= r; i++) {
-        tem[i] = arr[i];
+//     for(int i = 0; i <= r; i++) {
+//         tem[i] = arr[i];
+//     }
+
+//     /*
+//     arr = [X     X X X X X X X X]
+//            ^           ^ ^     ^
+//            l           m ^     r
+//            ^             ^
+//            l_ptr         r_ptr
+//     */
+
+//     while(l_ptr != m + 1 || r_ptr != r + 1) {
+//         if(l_ptr == m + 1) {
+//             tem[tem_index] = arr[r_ptr];
+//             r_ptr++;
+//             tem_index++;
+//         } else if (r_ptr == r + 1) {
+//             tem[tem_index] = arr[l_ptr];
+//             l_ptr++;
+//             tem_index++;
+//         } else {
+//             if(arr[l_ptr] < arr[r_ptr]) {
+//                 tem[tem_index] = arr[l_ptr];
+//                 l_ptr++;
+//             } else{
+//                 tem[tem_index] = arr[r_ptr];
+//                 r_ptr++;
+//             }
+//             tem_index++;
+//         }
+//     }
+
+//     for(int i = l; i < r + 1; i++) {
+//         arr[i] = tem[i];
+//     }
+// }
+
+// left ... mid | mid + 1 (= sec) ...right
+void merge(int* nums, int left, int mid, int right) {
+    int copy[right - left + 1];
+    int i = 0;
+    int li = left, ri = mid + 1;
+
+    while(li != mid + 1 && ri != right + 1) {
+        if(nums[li] < nums[ri])
+            copy[i++] = nums[li++];
+        if(nums[li] > nums[ri])
+            copy[i++] = nums[ri++];
     }
 
-    /*
-    arr = [X     X X X X X X X X]
-           ^           ^ ^     ^
-           l           m ^     r
-           ^             ^
-           l_ptr         r_ptr
-    */
+    while (li != mid + 1)
+        copy[i++] = nums[li++];
+    while(ri != right + 1)
+        copy[i++] = nums[ri++];
 
-    while(l_ptr != m + 1 || r_ptr != r + 1) {
-        if(l_ptr == m + 1) {
-            tem[tem_index] = arr[r_ptr];
-            r_ptr++;
-            tem_index++;
-        } else if (r_ptr == r + 1) {
-            tem[tem_index] = arr[l_ptr];
-            l_ptr++;
-            tem_index++;
-        } else {
-            if(arr[l_ptr] < arr[r_ptr]) {
-                tem[tem_index] = arr[l_ptr];
-                l_ptr++;
-            } else{
-                tem[tem_index] = arr[r_ptr];
-                r_ptr++;
-            }
-            tem_index++;
-        }
-    }
-
-    for(int i = l; i < r + 1; i++) {
-        arr[i] = tem[i];
-    }
+    for(int j = 0; j < right - left + 1; j++)
+        nums[j + left] = copy[j];
 }
 
-void mergeSort(int arr[], int l, int r) {
-    int m = (l + r) / 2;
+// void mergeSort(int arr[], int l, int r) {
+//     int m = (l + r) / 2;
 
-    // stop when l = r
-    if(l < r) {
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
-    }
+//     // stop when l = r
+//     if(l < r) {
+//         mergeSort(arr, l, m);
+//         mergeSort(arr, m + 1, r);
+//         merge(arr, l, m, r);
+//     }
+// }
+
+void mergeSort(int* nums, int left, int right) {
+    if(left == right)  return ;
+
+    int mid = left + (right - left) / 2;
+    
+    mergeSort(nums, left, mid);
+    mergeSort(nums,mid + 1, right);
+    merge(nums, left, mid, right);
 }
 
-int partition(int arr[], int l, int r) {
-    int replace = l;
+// int partition(int arr[], int l, int r) {
+//     int replace = l;
 
-    // r is pivot position
-    for(int move = l; move < r; move++) {
-        if(arr[move] < arr[r]) {
-            swap(&arr[replace], &arr[move]);
-            replace++;
-        }
+//     // r is pivot position
+//     for(int move = l; move < r; move++) {
+//         if(arr[move] < arr[r]) {
+//             swap(&arr[replace], &arr[move]);
+//             replace++;
+//         }
+//     }
+
+//     swap(&arr[replace], &arr[r]);
+
+//     return replace;
+// }
+
+int partition(int* nums, int left, int right) {
+    int replace= left, ptr = left;
+
+    while(ptr < right) {
+        if(nums[ptr] < nums[right])
+            swap(&nums[ptr], &nums[replace++]);
+        ptr++;
     }
 
-    swap(&arr[replace], &arr[r]);
+    swap(&nums[replace], &nums[right]);
 
     return replace;
 }
 
-void quickSort(int arr[], int l, int r) {
-    // stop when l = r
-    if(l < r) {
-        int m = partition(arr, l, r);
+// void quickSort(int arr[], int l, int r) {
+//     // stop when l = r
+//     if(l < r) {
+//         int m = partition(arr, l, r);
     
-        quickSort(arr, l, m - 1);
-        quickSort(arr, m + 1, r);
-    }
+//         quickSort(arr, l, m - 1);
+//         quickSort(arr, m + 1, r);
+//     }
+// }
+
+void quickSort(int* nums, int left, int right) {
+    if(left >= right)  return ;
+    
+    int pivot = partition(nums, left, right);
+    
+    quickSort(nums, left, pivot - 1);
+    quickSort(nums, pivot + 1, right);
 }
 
 void printArray(int arr[], int size) {
