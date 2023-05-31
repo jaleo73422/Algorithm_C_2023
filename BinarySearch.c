@@ -7,13 +7,11 @@ int binarySearch(int* num, int n, int target) {
     int mid;
 
     while(l <= r) {
-        // mid = l + (r - l) / 2;
-        mid = (l + r) / 2;
+        mid = l + (r - l) / 2;
+        // mid = (l + r) / 2;
         
         if (num[mid] == target)  return mid;
-
         if (num[mid] < target)  l = mid + 1;
-
         if (num[mid] > target)  r = mid - 1;
     }
     
@@ -25,14 +23,12 @@ int binarySearch_2(int* num, int n, int target, int l, int r) {
     int mid;
 
     while(l <= r) {
-        // mid = l + (r - l) / 2;
-        mid = (l + r) / 2;
+        mid = l + (r - l) / 2;
+        // mid = (l + r) / 2;
 
         if (num[mid] == target)  return mid;
-
         if (num[mid] < target)
             return binarySearch_2(num, n, target, mid + 1, r);
-
         if (num[mid] > target)
             return binarySearch_2(num, n, target, l, mid - 1);
     }
